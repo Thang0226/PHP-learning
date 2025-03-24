@@ -6,9 +6,7 @@
     $tax = 4.5*5000;
     $employed = false;
 
-    // Can use isset() and empty() to check values of Variables (~ in JS)
-
-    // key-value pairs can be used in Associative Arrays
+    // key-value pairs can be used in associative arrays
     $capitals = [
         "USA" => "Washington D.C.",
         "Vietnam" => "Hanoi",
@@ -27,7 +25,12 @@
     }
     echo "<br>";
 ?>
-
+<?=
+    "
+    Hello, I am $name
+    "
+    // This is a comment
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -38,23 +41,52 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
 <body class="container my-3">
+    <p>This is some html content. I dont know if i can print out this number: <?= $number?></p> <br>
+    <?=
+    "
+    I want to show my user: {$users[0]} <br>
+    Your tax is: $tax <br>
+    Are you employed? $employed
+    "
+    //In PHP: true --> "1", false --> ""
+    ?>
+    <?php 
+        $total = $price * $number;
+    ?>
+    <?= 
+        "Your total is $$total"
+    ?>
 
     <form action="" method="POST" class="login-form my-3">
         <div class="form-group">
-            <label for="country">Country:</label>
-            <input type="text" id="country" name="country" required>
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
         </div>
-        <button type="submit">Find capital city</button>
+        <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+        </div>
+        <button type="submit">Login</button>
     </form>
-    <p class="my-2">
+
+    <p>
+        <?= 
+            "Username: {$_POST['username']} <br>
+            Password: {$_POST['password']}"
+        ?>
+    </p>
+    <form action="" method="POST">
+        <label>Math number:</label>
+        <input type="number" name="number" required>
+        <button type="submit">Submit</button>
+    </form>
+    <p>
         <?php
-            $selectedCountry = $_POST["country"];
-            foreach ($capitals as $key => $value) {
-                if ($key == $selectedCountry) {
-                    echo "Capital of $key is: $value";
-                    break;
-                }
-            }
+            $value = $_POST['number'];
+            $result = abs($value);
+            // $result = $value ** 2; 
+
+            echo"Your result is: {$result}";
         ?>
     </p>
 
